@@ -1,5 +1,4 @@
-import {defineField, defineType} from 'sanity'
-
+import { defineField, defineType } from '@sanity-typed/types'
 import {i18n} from '../../languages'
 
 export default defineType({

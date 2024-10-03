@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from '@sanity-typed/types'
 
 import {i18n} from '../../languages'
 
@@ -19,7 +19,7 @@ export default defineType({
       title: lang.title,
       type: 'blockRichParagraph',
       fieldset: lang.isDefault ? undefined : 'translations',
-      validation: (Rule) => Rule.custom((value) => {
+      validation: (Rule) => Rule.custom((value: any) => {
         return value ? true : `${lang.title} is required.`
       }),
     })

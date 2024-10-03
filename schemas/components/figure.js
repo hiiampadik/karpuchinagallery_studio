@@ -1,4 +1,6 @@
-export default {
+import { defineType } from '@sanity-typed/types'
+
+export default defineType({
         title: 'Figure',
         name: 'figure',
         type: 'image',
@@ -16,4 +18,4 @@ export default {
             title: 'Alt',
           }
         ]
-      } 
+      })

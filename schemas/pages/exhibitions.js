@@ -1,8 +1,8 @@
-import { defineField, defineType } from '@sanity-typed/types'
+import { defineField, defineType, defineArrayMember } from '@sanity-typed/types'
 
 export default defineType({
-  name: "artists",
-  title: "Artists",
+  name: "exhibitions",
+  title: "Exhibitions",
   type: "document",
 
   fieldsets: [
@@ -14,7 +14,6 @@ export default defineType({
       },
     },
   ],
-
   fields: [
     defineField({
       name: "orderRank",
@@ -24,9 +23,9 @@ export default defineType({
     }),
 
     defineField({
-      name: 'name',
-      title: 'Full Name',
-      type: 'string',
+      name: 'title',
+      title: 'Title',
+      type: 'localizedString',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
@@ -36,24 +35,26 @@ export default defineType({
       type: "slug",
       fieldset: "info",
       options: {
-        source: "name",
+        source: "title.cs",
         maxLength: 96,
       },
     }),
-    defineField({
-      name: 'bio',
-      type: 'localizedRichParagraph',
-      validation: (Rule) => Rule.required(),
+    defineField(    {
+      name: 'artists',
+      title: 'Artists',
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Artist",
+          type: 'reference',
+          to: [{type: 'artists' }]
+        }),
+      ],
     }),
-
-    // todo  works + selected
-  // todo second bio
-  // todo cover
-
   ],
 
   preview: {
     select: {
-      title: "name"}
+      title: "title.cs"}
   },
 });

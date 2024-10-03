@@ -1,9 +1,11 @@
-export default {
+import { defineType, defineArrayMember } from '@sanity-typed/types'
+
+export default defineType({
   title: 'Block Rich Paragraph',
   name: 'blockRichParagraph',
   type: 'array',
   of: [
-    {
+    defineArrayMember({
       title: 'Block',
       type: 'block',
       styles: [
@@ -31,6 +33,6 @@ export default {
           },
         ],
       },
-    },
+    }),
   ],
-}
+})

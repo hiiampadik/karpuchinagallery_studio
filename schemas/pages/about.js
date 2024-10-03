@@ -1,6 +1,6 @@
-import {defineField} from 'sanity'
+import { defineField, defineType } from '@sanity-typed/types'
 
-export default {
+export default defineType({
   name: "about",
   title: "About",
   type: "document",
@@ -38,41 +38,40 @@ export default {
 
   fields: [
     defineField({
-      name: 'Contact',
+      name: 'contact',
       type: 'localizedRichParagraph',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'Address',
+      name: 'address',
       type: 'localizedRichParagraph',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'Open',
+      name: 'open',
       type: 'localizedRichParagraph',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'Connect',
+      name: 'connect',
       type: 'localizedRichParagraph',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
-
-
     defineField({
-      name: 'Bio',
+      name: 'bio',
       type: 'localizedRichText',
       fieldset: "bio",
       validation: (Rule) => Rule.required(),
     }),
 
 
+
     defineField({
-      name: 'Footer',
+      name: 'footer',
       type: 'localizedRichText',
       fieldset: "footer",
       validation: (Rule) => Rule.required(),
@@ -80,8 +79,8 @@ export default {
 
 
     defineField({
-      title: "Logos",
       name: 'logos',
+      title: "Logos",
       type: 'galleryArray',
     }),
   ],
@@ -92,4 +91,4 @@ export default {
       };
     },
   },
-};
+});
