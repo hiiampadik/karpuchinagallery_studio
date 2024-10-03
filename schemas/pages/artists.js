@@ -91,51 +91,8 @@ export default {
     },
 
 
-    {
-      title: "Client",
-      name: "client",
-      type: 'blockCredits',
-      fieldset: "credits",
-    },
-    {
-      title: "Photographer",
-      name: "photographer",
-      type: 'blockCredits',
-      fieldset: "credits",
-    },
-    {
-      title: "Collaboration",
-      name: "collaboration",
-      type: 'blockCredits',
-      fieldset: "credits",
-    },
-    {
-      title: "Web",
-      name: "web",
-      type: 'blockCredits',
-      fieldset: "credits",
-    },
 
 
-    {
-      name: "text",
-      title: "Text",
-      type: "object",
-
-      fields: [
-        {
-          title: "Czech",
-          name: "cs",
-          type: 'blockContent',
-        },
-        {
-          title: "English",
-          name: "en",
-          type: 'blockContent',
-        },
-    
-      ],
-    },
 
     {
       title: "Videos",
