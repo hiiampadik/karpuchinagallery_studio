@@ -7,8 +7,8 @@ export default defineType({
 
   fieldsets: [
     {
-      name: "info",
-      title: "Info",
+      name: "dates",
+      title: "Dates",
       options: {
         columns: 2
       },
@@ -26,18 +26,40 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'localizedString',
-      fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
     defineField(    {
       name: "slug",
       title: "Slug",
       type: "slug",
-      fieldset: "info",
       options: {
         source: "title.cs",
         maxLength: 96,
       },
+    }),
+
+
+    // todo requered
+    // todo solve one time actions
+    defineField({
+      title: 'Start Date',
+      name: 'startDate',
+      type: 'date',
+      fieldset: "dates",
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        calendarTodayLabel: 'Today'
+      }
+    }),
+    defineField({
+      title: 'End Date',
+      name: 'endDate',
+      type: 'date',
+      fieldset: "dates",
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        calendarTodayLabel: 'Today'
+      }
     }),
     defineField(    {
       name: 'artists',
@@ -51,6 +73,16 @@ export default defineType({
         }),
       ],
     }),
+
+    defineField({
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+      options: {
+        disableAlpha: true
+      }
+    }),
+
   ],
 
   preview: {

@@ -1,4 +1,4 @@
-import {defineArrayMember, defineField, defineType} from '@sanity-typed/types'
+import {defineField, defineType} from '@sanity-typed/types'
 
 export default defineType({
   name: "homepage",
@@ -6,8 +6,14 @@ export default defineType({
   type: "document",
   fields: [
     defineField(    {
-      name: 'selectedExhibition',
-      title: 'Selected Exhibition',
+      name: 'onDisplay',
+      title: 'On Display',
+      type: "reference",
+      to: [{type: 'exhibitions' }]
+    }),
+    defineField(    {
+      name: 'upcoming',
+      title: 'Upcoming',
       type: "reference",
       to: [{type: 'exhibitions' }]
     }),

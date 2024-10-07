@@ -17,6 +17,8 @@ import blockRichText from './schemas/components/blockRichText'
 import localizedRichText from './schemas/objects/localizedRichText'
 import exhibitions from './schemas/pages/exhibitions'
 import {InferSchemaValues} from '@sanity-typed/types'
+import {colorInput} from '@sanity/color-input'
+
 
 const sanityConfig = defineConfig({
   name: 'default',
@@ -44,6 +46,7 @@ const sanityConfig = defineConfig({
             ),
           ]),
     }),
+    colorInput(),
     // documentInternationalization({
     //   supportedLanguages: i18n.languages,
     //   schemaTypes: ['about'],
