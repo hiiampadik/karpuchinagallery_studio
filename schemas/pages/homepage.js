@@ -9,13 +9,15 @@ export default defineType({
       name: 'onDisplay',
       title: 'On Display',
       type: "reference",
-      to: [{type: 'exhibitions' }]
+      to: [{type: 'exhibitions' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField(    {
       name: 'upcoming',
       title: 'Upcoming',
       type: "reference",
-      to: [{type: 'exhibitions' }]
+      to: [{type: 'exhibitions' }],
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

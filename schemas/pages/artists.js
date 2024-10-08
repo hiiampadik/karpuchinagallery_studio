@@ -35,10 +35,12 @@ export default defineType({
       title: "Slug",
       type: "slug",
       fieldset: "info",
+      description: 'The slug is the unique part of the URL for this document. It should be lowercase and contain only letters, numbers, or dashes.',
       options: {
         source: "name",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'bio',
