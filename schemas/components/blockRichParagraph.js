@@ -1,4 +1,4 @@
-import { defineType, defineArrayMember } from '@sanity-typed/types'
+import {defineArrayMember, defineType} from 'sanity'
 
 export default defineType({
   title: 'Block Rich Paragraph',

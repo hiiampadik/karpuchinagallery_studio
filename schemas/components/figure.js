@@ -1,4 +1,4 @@
-import { defineType } from '@sanity-typed/types'
+import {defineType} from 'sanity'
 
 export default defineType({
         title: 'Figure',

@@ -15,9 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity-typed/types": "^6.3.6",
     "@sanity/color-input": "^4.0.1",
-    "@sanity/document-internationalization": "^3.1.0",
     "@sanity/orderable-document-list": "^1.2.2",
     "@sanity/vision": "^3.59.0",
     "react": "^18.2.0",

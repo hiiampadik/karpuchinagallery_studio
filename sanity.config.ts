@@ -16,7 +16,6 @@ import blockRichParagraph from './schemas/components/blockRichParagraph'
 import blockRichText from './schemas/components/blockRichText'
 import localizedRichText from './schemas/objects/localizedRichText'
 import exhibitions from './schemas/pages/exhibitions'
-import {InferSchemaValues} from '@sanity-typed/types'
 import {colorInput} from '@sanity/color-input'
 
 
@@ -28,7 +27,6 @@ const sanityConfig = defineConfig({
   dataset: 'production',
 
   plugins: [
-    visionTool(),
     structureTool({
       structure: (S, context) =>
         S.list()
@@ -47,10 +45,6 @@ const sanityConfig = defineConfig({
           ]),
     }),
     colorInput(),
-    // documentInternationalization({
-    //   supportedLanguages: i18n.languages,
-    //   schemaTypes: ['about'],
-    // }),
     internationalizedArray({
       languages: i18n.languages,
       defaultLanguages: [i18n.base],
@@ -86,4 +80,3 @@ const sanityConfig = defineConfig({
 })
 
 export default sanityConfig
-export type SanityValues = InferSchemaValues<typeof sanityConfig>
