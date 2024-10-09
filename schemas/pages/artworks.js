@@ -1,10 +1,13 @@
 import {defineField, defineType} from 'sanity'
+import {definePageType} from '@q42/sanity-plugin-page-tree'
+import {pageTreeConfig} from '../../page-tree-config'
 
-export default defineType({
+const _artworkType = defineType({
   name: "artworks",
   title: "Artworks",
   type: "document",
   fields: [
+
     defineField({
       name: 'title',
       title: 'Title',
@@ -25,3 +28,6 @@ export default defineType({
       title: "title.cs"}
   },
 });
+
+
+export const artworkType = definePageType(_artworkType, pageTreeConfig)

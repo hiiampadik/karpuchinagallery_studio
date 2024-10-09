@@ -1,12 +1,8 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import homepage from './schemas/pages/homepage'
 import about from './schemas/pages/about'
-import artists from './schemas/pages/artists'
 import figure from './schemas/components/figure'
 import galleryArray from './schemas/components/galleryArray'
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 import localizedString from './schemas/objects/localizedString'
 import localizedText from './schemas/objects/localizedText'
@@ -17,7 +13,12 @@ import blockRichText from './schemas/components/blockRichText'
 import localizedRichText from './schemas/objects/localizedRichText'
 import exhibitions from './schemas/pages/exhibitions'
 import {colorInput} from '@sanity/color-input'
-
+import fairs from './schemas/pages/fairs'
+import {createPageTreeDocumentList} from '@q42/sanity-plugin-page-tree'
+import {pageTreeConfig} from './page-tree-config'
+import homepage from './schemas/pages/homepage'
+import {artworkType} from './schemas/pages/artworks'
+import {artistType} from './schemas/pages/artists'
 
 const sanityConfig = defineConfig({
   name: 'default',
@@ -27,20 +28,45 @@ const sanityConfig = defineConfig({
   dataset: 'production',
 
   plugins: [
+    // structureTool({
+    //   structure: (S, context) =>
+    //     S.list()
+    //       .title('KG Website')
+    //       .items([
+    //         orderableDocumentListDeskItem({type: 'artists', S, context}),
+    //
+    //         S.listItem().title('Homepage').child(S.document().schemaType('homepage').documentId('homepage')),
+    //
+    //         S.listItem().title('About').child(S.document().schemaType('about').documentId('about')),
+    //
+    //         // List out the rest of the document types, but filter out the config type
+    //         ...S.documentTypeListItems().filter(
+    //           (listItem) => !['about', 'homepage'].includes(listItem.getId() ?? ''),
+    //         ),
+    //       ]),
+    // }),
     structureTool({
       structure: (S, context) =>
         S.list()
-          .title('Content')
+          .title('KG Website')
           .items([
-            orderableDocumentListDeskItem({type: 'artists', S, context}),
 
             S.listItem().title('Homepage').child(S.document().schemaType('homepage').documentId('homepage')),
-
             S.listItem().title('About').child(S.document().schemaType('about').documentId('about')),
 
-            // List out the rest of the document types, but filter out the config type
+            // S.listItem()
+            //   .title('Artists')
+            //   .child(
+            //     createPageTreeDocumentList(S, {
+            //       config: pageTreeConfig,
+            //       extendDocumentList: (builder) =>
+            //         builder.id('pages').title('Pages').apiVersion(pageTreeConfig.apiVersion),
+            //     }),
+            //   ),
+
+
             ...S.documentTypeListItems().filter(
-              (listItem) => !['about', 'homepage'].includes(listItem.getId() ?? ''),
+              (listItem) => !['about', 'homepage', 'artists'].includes(listItem.getId() ?? ''),
             ),
           ]),
     }),
@@ -62,8 +88,10 @@ const sanityConfig = defineConfig({
         ...prevTypes,
         homepage,
         about,
-        artists,
         exhibitions,
+        fairs,
+        artistType,
+        artworkType,
 
         figure,
         blockRichText,

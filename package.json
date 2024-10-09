@@ -15,6 +15,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@q42/sanity-plugin-page-tree": "^1.2.2",
     "@sanity/color-input": "^4.0.1",
     "@sanity/orderable-document-list": "^1.2.2",
     "@sanity/vision": "^3.59.0",
