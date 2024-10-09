@@ -1,19 +1,29 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: "artists",
-  title: "Artists",
+  name: "fairs",
+  title: "Fairs",
   type: "document",
-
   fieldsets: [
     {
-      name: "info",
-      title: "Info",
+      name: "texts",
+      title: "Texts",
       options: {
-        columns: 2
+        collapsible: true,
+        columns: 1,
       },
     },
+    {
+      name: "details",
+      title: "Details",
+      options: {
+        collapsible: true,
+        columns: 1,
+      },
+    },
+
   ],
+
 
   fields: [
     defineField({
@@ -22,20 +32,20 @@ export default defineType({
       type: "string",
       hidden: true,
     }),
-
     defineField({
-      name: 'name',
-      title: 'Full Name',
-      type: 'string',
+      name: 'title',
+      title: 'Title',
+      type: 'localizedString',
       validation: (Rule) => Rule.required(),
     }),
-    defineField(    {
+
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       description: 'The slug is the unique part of the URL for this document. It should be lowercase and contain only letters, numbers, or dashes.',
       options: {
-        source: "name",
+        source: "title.cs",
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
@@ -45,18 +55,27 @@ export default defineType({
       title: "Cover",
       name: "cover",
       type: "image",
+      fieldset: 'details',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'bio',
-      type: 'localizedRichParagraph',
-      validation: (Rule) => Rule.required(),
+      name: 'artists',
+      title: 'Artists',
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Artist",
+          type: 'reference',
+          to: [{type: 'artists' }]
+        }),
+      ],
+      validation: Rule => Rule.unique(),
     }),
   ],
 
   preview: {
     select: {
-      title: "name"}
+      title: "title.cs"}
   },
 });

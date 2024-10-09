@@ -149,7 +149,6 @@ export default defineType({
       validation: Rule => Rule.unique(),
     }),
 
-
     defineField({
       name: 'curator',
       title: 'Curator',
@@ -164,6 +163,7 @@ export default defineType({
       fieldset: "texts",
       validation: (Rule) => Rule.required(),
     }),
+
   ],
 
   preview: {
