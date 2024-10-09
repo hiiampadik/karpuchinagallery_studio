@@ -27,14 +27,12 @@ export default defineType({
       name: 'name',
       title: 'Full Name',
       type: 'string',
-      fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
     defineField(    {
       name: "slug",
       title: "Slug",
       type: "slug",
-      fieldset: "info",
       description: 'The slug is the unique part of the URL for this document. It should be lowercase and contain only letters, numbers, or dashes.',
       options: {
         source: "name",
@@ -42,6 +40,15 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    // todo knihovna medii organizovanejsi
+    defineField({
+      title: "Cover",
+      name: "cover",
+      type: "image",
+      validation: (Rule) => Rule.required(),
+    }),
+
     defineField({
       name: 'bio',
       type: 'localizedRichParagraph',
@@ -50,7 +57,6 @@ export default defineType({
 
     // todo  works + selected
   // todo second bio
-  // todo cover
 
   ],
 

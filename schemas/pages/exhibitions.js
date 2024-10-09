@@ -4,7 +4,6 @@ export default defineType({
   name: "exhibitions",
   title: "Exhibitions",
   type: "document",
-
   fieldsets: [
     {
       name: "dates",
@@ -13,7 +12,26 @@ export default defineType({
         columns: 2
       },
     },
+    {
+      name: "texts",
+      title: "Texts",
+      options: {
+        collapsible: true,
+        columns: 1,
+      },
+    },
+    {
+      name: "details",
+      title: "Details",
+      options: {
+        collapsible: true,
+        columns: 1,
+      },
+    },
+
   ],
+
+
   fields: [
     defineField({
       name: "orderRank",
@@ -21,16 +39,14 @@ export default defineType({
       type: "string",
       hidden: true,
     }),
-
-
-
     defineField({
       name: 'title',
       title: 'Title',
       type: 'localizedString',
       validation: (Rule) => Rule.required(),
     }),
-    defineField(    {
+
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -42,10 +58,36 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+    defineField({
+      title: "Cover",
+      name: "cover",
+      type: "image",
+      fieldset: 'details',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+      fieldset: 'details',
+      options: {
+        disableAlpha: true
+      }
+    }),
+    defineField({
+      name: "document",
+      title: "Document",
+      type: "file",
+      fieldset: 'details',
+      fields: [
+        {
+          name: "documentCover",
+          title: "Document Cover",
+          type: "image",
+        },
+      ],
+    }),
 
-
-    // todo reference not repeating
-    // todo cover
     defineField({
       title: 'Start Date',
       name: 'startDate',
@@ -57,7 +99,7 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    {
+    defineField({
       name: 'oneDayEvent',
       title: 'One Day Event',
       type: 'boolean',
@@ -67,7 +109,7 @@ export default defineType({
       options: {
         layout: 'checkbox' // or 'switch' for a toggle
       }
-    },
+    }),
     defineField({
       title: 'End Date',
       name: 'endDate',
@@ -91,9 +133,9 @@ export default defineType({
       })
     }),
 
+    // todo selected works
 
-
-    defineField(    {
+    defineField({
       name: 'artists',
       title: 'Artists',
       type: "array",
@@ -104,17 +146,24 @@ export default defineType({
           to: [{type: 'artists' }]
         }),
       ],
+      validation: Rule => Rule.unique(),
     }),
+
 
     defineField({
-      name: 'color',
-      title: 'Color',
-      type: 'color',
-      options: {
-        disableAlpha: true
-      }
+      name: 'curator',
+      title: 'Curator',
+      type: 'string',
+      fieldset: "texts",
+      validation: (Rule) => Rule.required(),
     }),
-
+    defineField({
+      name: 'curatorsText',
+      title: `Curator's Text`,
+      type: 'localizedRichParagraph',
+      fieldset: "texts",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 
   preview: {
