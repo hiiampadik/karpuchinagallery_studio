@@ -1,9 +1,11 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default defineType({
   name: "artists",
   title: "Artists",
   type: "document",
+  orderings: [orderRankOrdering],
 
   fieldsets: [
     {
@@ -16,11 +18,9 @@ export default defineType({
   ],
 
   fields: [
-    defineField({
-      name: "orderRank",
-      title: "Order",
-      type: "string",
-      hidden: true,
+    orderRankField({
+      type: "category",
+      newItemPosition: "after"
     }),
 
     defineField({
@@ -57,6 +57,15 @@ export default defineType({
 
   preview: {
     select: {
-      title: "name"}
+      title: "name",
+      media: "cover"
+    },
+    prepare(selection) {
+      const {title, media} = selection;
+      return {
+        title: title ?? 'Draft',
+        media: media
+      };
+    }
   },
 });

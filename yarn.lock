@@ -1974,7 +1974,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.3.10.tgz#df934a94ae6669fe6b15515d800afb221cba0498"
   integrity sha512-5wVG/vIiGuGrSmq+Bl3PY7XDgQrGv0fyHdJI64FSulnr2wH3NMqZ6C59UFxnrZ93sr7kOt0zQFoNv2lkPBi0Cg==
 
-"@sanity/icons@^2.11.7", "@sanity/icons@^2.11.8", "@sanity/icons@^2.4.1":
+"@sanity/icons@^2.0.0", "@sanity/icons@^2.11.7", "@sanity/icons@^2.11.8", "@sanity/icons@^2.4.1":
   version "2.11.8"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-2.11.8.tgz#90a38b7d23b5c9f728a6e7ebdac80c3f76c64c35"
   integrity sha512-C4ViXtk6eyiNTQ5OmxpfmcK6Jw+LLTi9zg9XBUD15DzC4xTHaGW9SVfUa43YtPGs3WC3M0t0K59r0GDjh52HIg==
@@ -2165,19 +2165,7 @@
     "@sanity/client" "^6.22.1"
     "@types/react" "^18.3.5"
 
-"@sanity/ui@^1.7.1":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.9.3.tgz#4af45902ac95801aa5ea57f377beaf3e3cb36339"
-  integrity sha512-AdWEVFaK0Snk6xxP0lGPVP3QQYKwzkfGFpFZnL9d6UtWt8yeuS8BMLVAzmXzg14hrqH50ex9nvNl3eq6a0MWiw==
-  dependencies:
-    "@floating-ui/react-dom" "2.0.0"
-    "@sanity/color" "^2.2.5"
-    "@sanity/icons" "^2.4.1"
-    csstype "^3.1.2"
-    framer-motion "^10.16.2"
-    react-refractor "^2.1.7"
-
-"@sanity/ui@^2.1.0", "@sanity/ui@^2.8.8", "@sanity/ui@^2.8.9":
+"@sanity/ui@^1.0 || ^2.0", "@sanity/ui@^2.1.0", "@sanity/ui@^2.8.8", "@sanity/ui@^2.8.9":
   version "2.8.9"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-2.8.9.tgz#cb14532a63fcca9378afde13657fd5644f46b088"
   integrity sha512-ii5pa3HSA5DonhY+IRb5FHpS5rIM3gyMGTfX+HjaPqRy1itSNs1EqetI9oMVsheCYWEQTdZFzIpIX2mEsGVKKw==
@@ -2190,6 +2178,18 @@
     react-refractor "^2.2.0"
     use-effect-event "^1.0.2"
 
+"@sanity/ui@^1.7.1":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.9.3.tgz#4af45902ac95801aa5ea57f377beaf3e3cb36339"
+  integrity sha512-AdWEVFaK0Snk6xxP0lGPVP3QQYKwzkfGFpFZnL9d6UtWt8yeuS8BMLVAzmXzg14hrqH50ex9nvNl3eq6a0MWiw==
+  dependencies:
+    "@floating-ui/react-dom" "2.0.0"
+    "@sanity/color" "^2.2.5"
+    "@sanity/icons" "^2.4.1"
+    csstype "^3.1.2"
+    framer-motion "^10.16.2"
+    react-refractor "^2.1.7"
+
 "@sanity/util@3.37.2":
   version "3.37.2"
   resolved "https://registry.yarnpkg.com/@sanity/util/-/util-3.37.2.tgz#671085705bd532c281d5da24910cc16d040cd8e2"
@@ -2201,7 +2201,7 @@
     moment "^2.29.4"
     rxjs "^7.8.1"
 
-"@sanity/util@3.60.0":
+"@sanity/util@3.60.0", "@sanity/util@^3.0.0", "@sanity/util@^3.34.0":
   version "3.60.0"
   resolved "https://registry.yarnpkg.com/@sanity/util/-/util-3.60.0.tgz#3bf2fb4cad5d86a4f643d55c4ae36c54452cb91b"
   integrity sha512-iF5HKij79D5JDMSCI8wmK4D45PHh0tcsJBrc6rDlltKf8SOE6sbin3KFqOHcw7oyffTvP+yfeZHWzmvc/m5SQw==
@@ -3738,6 +3738,11 @@ direction@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/direction/-/direction-1.0.4.tgz#2b86fb686967e987088caf8b89059370d4837442"
   integrity sha512-GYqKi1aH7PJXxdhTeZBFrg8vUBeKXi+cNprXsC1kpJcbcVnV9wBsrOu1cQEdG0WeQwlfHiy3XvnKfIrJ2R0NzQ==
+
+dlv@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/dlv/-/dlv-1.1.3.tgz#5c198a8a11453596e751494d49874bc7732f2e79"
+  integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
 
 doc-path@4.1.1:
   version "4.1.1"
@@ -6447,7 +6452,7 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
-react-fast-compare@^3.2.0:
+react-fast-compare@^3.2.0, react-fast-compare@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz#929a97a532304ce9fee4bcae44234f1ce2c21d49"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
@@ -6471,6 +6476,11 @@ react-i18next@14.0.2:
   dependencies:
     "@babel/runtime" "^7.23.9"
     html-parse-stringify "^3.0.1"
+
+react-icons@^4.3.1:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.12.0.tgz#54806159a966961bfd5cdb26e492f4dafd6a8d78"
+  integrity sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
@@ -6890,6 +6900,21 @@ sanity-diff-patch@^3.0.2:
   dependencies:
     "@sanity/diff-match-patch" "^3.0.0"
 
+sanity-plugin-documents-pane@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/sanity-plugin-documents-pane/-/sanity-plugin-documents-pane-2.3.0.tgz#7669a0c0f27b8f4b595fbe8a587b5fc6bd6b776a"
+  integrity sha512-2gDYMW9UonENGcSAsAVlnGo6GKBDIAsZY7fpMDZ3/1le0qKAKFnXTbmov7fCCW6uNI+3VNQ2xhhicscr8iEgTQ==
+  dependencies:
+    "@sanity/icons" "^2.0.0"
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^1.0 || ^2.0"
+    "@sanity/util" "^3.0.0"
+    "@sanity/uuid" "^3.0.1"
+    dlv "^1.1.3"
+    react-fast-compare "^3.2.0"
+    rxjs "^7.0.0"
+    sanity-plugin-utils "^1.6.3"
+
 sanity-plugin-internationalized-array@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/sanity-plugin-internationalized-array/-/sanity-plugin-internationalized-array-3.0.1.tgz#9233f294d78b6e7ecae86db2a0c54b8b7a3a7b0e"
@@ -6911,7 +6936,21 @@ sanity-plugin-tags@^2.0.2:
     "@sanity/incompatible-plugin" "^1.0.4"
     react-select "^5.7.0"
 
-sanity-plugin-utils@^1.6.2:
+sanity-plugin-taxonomy-manager@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/sanity-plugin-taxonomy-manager/-/sanity-plugin-taxonomy-manager-3.2.4.tgz#673b465586ec68d77e1aea99cf08c7b7347daf57"
+  integrity sha512-5FMEhGDiAci+6F5blWbqzXZZG4Zwo0PqZmD7M0COkeEGCs/DaWMzqhYgpjvOL04cpyyv9GpdjSCWgUnJcGoSBQ==
+  dependencies:
+    "@sanity/color" "^3.0.0"
+    "@sanity/icons" "^3.4.0"
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^2.8.9"
+    "@sanity/util" "^3.34.0"
+    react-fast-compare "^3.2.2"
+    react-icons "^4.3.1"
+    rxjs "^7.8.1"
+
+sanity-plugin-utils@^1.6.2, sanity-plugin-utils@^1.6.3:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/sanity-plugin-utils/-/sanity-plugin-utils-1.6.5.tgz#f32e6ef91585cc3d60ff9964690f8b21d213fed8"
   integrity sha512-QJOBaNSIR7nG8xaSRD/CsqPMz8ZMZIkJ2pCIzB14uD9J4iiCaRh6V4R6We6L4gNJ/Pr57AuzQS/SGqlyTue5Qw==

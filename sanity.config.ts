@@ -1,6 +1,5 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
 import homepage from './schemas/pages/homepage'
 import about from './schemas/pages/about'
 import artists from './schemas/pages/artists'
@@ -17,13 +16,18 @@ import blockRichText from './schemas/components/blockRichText'
 import localizedRichText from './schemas/objects/localizedRichText'
 import exhibitions from './schemas/pages/exhibitions'
 import {colorInput} from '@sanity/color-input'
+import {taxonomyManager} from 'sanity-plugin-taxonomy-manager'
+import DocumentsPane from 'sanity-plugin-documents-pane'
+import blockArtworks from './schemas/components/blockArtworks'
+import artworks from './schemas/pages/artworks'
+import {HomeIcon, InfoOutlineIcon, UsersIcon, ImagesIcon, PresentationIcon} from '@sanity/icons'
 
 
 const sanityConfig = defineConfig({
   name: 'default',
   title: 'Karpuchina Gallery',
 
-  projectId: 'ai1apfv0',
+  projectId: 'cg5jvog9',
   dataset: 'production',
 
   plugins: [
@@ -32,16 +36,71 @@ const sanityConfig = defineConfig({
         S.list()
           .title('Content')
           .items([
-            orderableDocumentListDeskItem({type: 'artists', S, context}),
 
-            S.listItem().title('Homepage').child(S.document().schemaType('homepage').documentId('homepage')),
+            S.listItem()
+              .title('Homepage')
+              .icon(HomeIcon)
+              .child(
+                S.document()
+                  .schemaType('homepage')
+                  .documentId('homepage')),
 
-            S.listItem().title('About').child(S.document().schemaType('about').documentId('about')),
+            S.listItem()
+              .title('About')
+              .icon(InfoOutlineIcon)
+              .child(
+                S.document()
+                  .schemaType('about')
+                  .documentId('about')),
 
-            // List out the rest of the document types, but filter out the config type
-            ...S.documentTypeListItems().filter(
-              (listItem) => !['about', 'homepage'].includes(listItem.getId() ?? ''),
-            ),
+            S.divider(),
+
+            S.listItem()
+              .title('Exhibitions')
+              .icon(PresentationIcon)
+              .child(
+                S.documentList()
+                  .title('Exhibitions')
+                  .filter('_type == "exhibitions"')
+                  .params({ order: 'startDate' })
+                  .defaultOrdering([{ field: 'startDate', direction: 'asc' }])
+              ),
+
+
+            orderableDocumentListDeskItem({
+              type: 'artists',
+              title: 'Artists',
+              icon: UsersIcon,
+              S, context}),
+
+            S.divider(),
+
+            S.listItem()
+              .title('All Artworks')
+              .icon(ImagesIcon)
+              .child(
+                S.documentList()
+                  .title('All Artworks')
+                  .filter('_type == "artworks"')
+                  .defaultOrdering([{ field: 'artist', direction: 'asc' }])
+              ),
+
+
+            S.listItem()
+              .title('Artworks by Artist')
+              .icon(ImagesIcon)
+              .child(
+                S.documentTypeList('artists')
+                  .title('Artists')
+                  .child(artistId =>
+                    S.documentList()
+                      .title('Artworks')
+                      .filter('_type == "artworks" && artist._ref == $artistId')
+                      .params({ artistId }),
+                  )
+              ),
+
+
           ]),
     }),
     colorInput(),
@@ -52,10 +111,6 @@ const sanityConfig = defineConfig({
     }),
   ],
 
-  // schema: {
-  //   types: schemaTypes,
-  // },
-
   schema: {
     types: (prevTypes: any) => {
       return [
@@ -63,11 +118,14 @@ const sanityConfig = defineConfig({
         homepage,
         about,
         artists,
+        artworks,
+        // fairs,
         exhibitions,
 
         figure,
         blockRichText,
         blockRichParagraph,
+        blockArtworks,
         galleryArray,
 
         localizedRichText,

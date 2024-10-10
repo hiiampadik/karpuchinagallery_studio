@@ -133,8 +133,6 @@ export default defineType({
       })
     }),
 
-    // todo selected works
-
     defineField({
       name: 'artists',
       title: 'Artists',
@@ -148,6 +146,23 @@ export default defineType({
       ],
       validation: Rule => Rule.unique(),
     }),
+
+    defineField({
+      name: 'artworks',
+      title: 'Artworks',
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Artwork",
+          type: 'reference',
+          to: [{type: 'artworks' }]
+        }),
+      ],
+      validation: Rule => Rule.unique(),
+    }),
+
+
+    // todo gallery
 
     defineField({
       name: 'curator',
@@ -168,6 +183,34 @@ export default defineType({
 
   preview: {
     select: {
-      title: "title.cs"}
-  },
+      title: "title.cs",
+      startDate: "startDate",
+      endDate: "endDate",
+      oneDayEvent: "oneDayEvent",
+      media: "cover",
+    },
+    prepare(selection) {
+      const { title, startDate, endDate, oneDayEvent, media } = selection;
+
+      // Function to format dates as DD/MM/YYYY
+      const formatDate = (dateString) => {
+        if (!dateString) return null;
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-GB'); // en-GB locale formats as DD/MM/YYYY
+      };
+
+      const formattedStartDate = formatDate(startDate);
+      const formattedEndDate = formatDate(endDate);
+
+      const dateSubtitle = oneDayEvent
+        ? formattedStartDate
+        : `${formattedStartDate} - ${formattedEndDate}`;
+
+      return {
+        title: title ?? 'Draft',
+        subtitle: dateSubtitle,
+        media: media,
+      };
+    }
+  }
 });
