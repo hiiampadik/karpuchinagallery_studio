@@ -7,6 +7,13 @@ export default defineType({
 
   fieldsets: [
     {
+      name: "info",
+      title: "Info",
+      options: {
+        columns: 2
+      },
+    },
+    {
       name: "artistSection",
       title: "Artist",
       options: {
@@ -21,7 +28,15 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      fieldset: "info",
       validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      title: 'Year',
+      name: 'year',
+      type: 'string',
+      fieldset: "info",
     }),
 
 
@@ -44,6 +59,8 @@ export default defineType({
         layout: 'checkbox' // or 'switch' for a toggle
       }
     }),
+
+    // todo year
 
     defineField({
       title: "Cover",
