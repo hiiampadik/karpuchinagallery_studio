@@ -69,6 +69,17 @@ export default defineType({
     }),
 
 
+    defineField({
+      name: 'gallery',
+      title: "Image Gallery",
+      type: 'galleryArray',
+    }),
+
+    defineField({
+      name: 'logos',
+      title: "Logos",
+      type: 'galleryArray',
+    }),
 
     defineField({
       name: 'footer',
@@ -77,12 +88,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
-
-    defineField({
-      name: 'logos',
-      title: "Logos",
-      type: 'galleryArray',
-    }),
   ],
   preview: {
     prepare() {

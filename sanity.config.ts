@@ -1,26 +1,35 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
+import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {colorInput} from '@sanity/color-input'
+import {i18n} from './languages'
+import {HomeIcon, InfoOutlineIcon, UsersIcon, ImagesIcon, PresentationIcon} from '@sanity/icons'
+
 import homepage from './schemas/pages/homepage'
 import about from './schemas/pages/about'
 import artists from './schemas/pages/artists'
+import exhibitions from './schemas/pages/exhibitions'
+import artworks from './schemas/pages/artworks'
+
 import figure from './schemas/components/figure'
 import galleryArray from './schemas/components/galleryArray'
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
-import {internationalizedArray} from 'sanity-plugin-internationalized-array'
-import localizedString from './schemas/objects/localizedString'
-import localizedText from './schemas/objects/localizedText'
-import {i18n} from './languages'
-import localizedRichParagraph from './schemas/objects/localizedRichParagraph'
 import blockRichParagraph from './schemas/components/blockRichParagraph'
 import blockRichText from './schemas/components/blockRichText'
-import localizedRichText from './schemas/objects/localizedRichText'
-import exhibitions from './schemas/pages/exhibitions'
-import {colorInput} from '@sanity/color-input'
-import {taxonomyManager} from 'sanity-plugin-taxonomy-manager'
-import DocumentsPane from 'sanity-plugin-documents-pane'
 import blockArtworks from './schemas/components/blockArtworks'
-import artworks from './schemas/pages/artworks'
-import {HomeIcon, InfoOutlineIcon, UsersIcon, ImagesIcon, PresentationIcon} from '@sanity/icons'
+import artistAwards from './schemas/components/artistAwards'
+import artistEducation from './schemas/components/artistEducation'
+import artistGroupExhibition from './schemas/components/artistGroupExhibition'
+import artistSoloExhibition from './schemas/components/artistSoloExhibition'
+
+import localizedString from './schemas/objects/localizedString'
+import localizedText from './schemas/objects/localizedText'
+import localizedRichParagraph from './schemas/objects/localizedRichParagraph'
+import localizedRichText from './schemas/objects/localizedRichText'
+
+
+
+
 
 
 const sanityConfig = defineConfig({
@@ -127,6 +136,10 @@ const sanityConfig = defineConfig({
         blockRichParagraph,
         blockArtworks,
         galleryArray,
+        artistAwards,
+        artistEducation,
+        artistGroupExhibition,
+        artistSoloExhibition,
 
         localizedRichText,
         localizedRichParagraph,
