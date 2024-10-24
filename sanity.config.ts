@@ -26,11 +26,8 @@ import localizedString from './schemas/objects/localizedString'
 import localizedText from './schemas/objects/localizedText'
 import localizedRichParagraph from './schemas/objects/localizedRichParagraph'
 import localizedRichText from './schemas/objects/localizedRichText'
-
-
-
-
-
+import documentsArray from './schemas/components/documentsArray'
+import fairs from './schemas/pages/fairs'
 
 const sanityConfig = defineConfig({
   name: 'default',
@@ -75,14 +72,33 @@ const sanityConfig = defineConfig({
                   .defaultOrdering([{ field: 'startDate', direction: 'asc' }])
               ),
 
+            S.listItem()
+              .title('Fairs')
+              .icon(PresentationIcon)
+              .child(
+                S.documentList()
+                  .title('Fairs')
+                  .filter('_type == "fairs"')
+                  .params({ order: 'startDate' })
+                  .defaultOrdering([{ field: 'startDate', direction: 'asc' }])
+              ),
+
+            S.listItem()
+              .title('Artists')
+              .icon(UsersIcon)
+              .child(
+                S.documentList()
+                  .title('Artists')
+                  .filter('_type == "artists"')
+              ),
 
             orderableDocumentListDeskItem({
               type: 'artists',
-              title: 'Artists',
-              icon: UsersIcon,
+              title: 'Order of Artists',
               S, context}),
 
             S.divider(),
+
 
             S.listItem()
               .title('All Artworks')
@@ -110,6 +126,8 @@ const sanityConfig = defineConfig({
               ),
 
 
+
+
           ]),
     }),
     colorInput(),
@@ -128,7 +146,7 @@ const sanityConfig = defineConfig({
         about,
         artists,
         artworks,
-        // fairs,
+        fairs,
         exhibitions,
 
         figure,
@@ -136,6 +154,7 @@ const sanityConfig = defineConfig({
         blockRichParagraph,
         blockArtworks,
         galleryArray,
+        documentsArray,
         artistAwards,
         artistEducation,
         artistGroupExhibition,

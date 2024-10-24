@@ -75,17 +75,10 @@ export default defineType({
       }
     }),
     defineField({
-      name: "document",
-      title: "Document",
-      type: "file",
+      name: "documents",
+      title: "Documents",
+      type: "documentsArray",
       fieldset: 'details',
-      fields: [
-        {
-          name: "documentCover",
-          title: "Document Cover",
-          type: "image",
-        },
-      ],
     }),
 
     defineField({
@@ -161,16 +154,6 @@ export default defineType({
       validation: Rule => Rule.unique(),
     }),
 
-
-    // todo gallery
-
-    defineField({
-      name: 'curator',
-      title: 'Curator',
-      type: 'string',
-      fieldset: "texts",
-      validation: (Rule) => Rule.required(),
-    }),
     defineField({
       name: 'curatorsText',
       title: `Curator's Text`,
@@ -179,6 +162,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+    defineField({
+      name: 'gallery',
+      title: "Image Gallery",
+      type: 'galleryArray',
+    }),
   ],
 
   preview: {
