@@ -66,6 +66,15 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+      fieldset: 'details',
+      options: {
+        disableAlpha: true
+      }
+    }),
+    defineField({
       name: "documents",
       title: "Documents",
       type: "documentsArray",
