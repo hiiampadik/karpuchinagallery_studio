@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default defineType({
@@ -88,7 +88,19 @@ export default defineType({
       fieldset: 'additionalInfo'
     }),
 
-
+    defineField({
+      name: 'events',
+      title: 'Exhibitions / Fairs',
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Event",
+          type: 'reference',
+          to: [{type: 'exhibitions' }, {type: 'fairs' }]
+        }),
+      ],
+      validation: Rule => Rule.unique(),
+    }),
 
   ],
 

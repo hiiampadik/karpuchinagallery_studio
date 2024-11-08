@@ -91,48 +91,35 @@ export default defineType({
     }),
 
     defineField({
-      title: 'Start Date',
-      name: 'startDate',
-      type: 'date',
+      title: 'Opening',
+      name: 'openingDate',
+      type: 'datetime',
       fieldset: "dates",
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
+        calendarTodayLabel: 'Today',
       },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'oneDayEvent',
-      title: 'One Day Event',
-      type: 'boolean',
-      description: 'Check this if the event is only one day long',
-      fieldset: "dates",
-      initialValue: false,
-      options: {
-        layout: 'checkbox' // or 'switch' for a toggle
-      }
-    }),
-    defineField({
-      title: 'End Date',
-      name: 'endDate',
+      title: 'From Date',
+      name: 'fromDate',
       type: 'date',
       fieldset: "dates",
       options: {
         dateFormat: 'YYYY-MM-DD',
         calendarTodayLabel: 'Today'
       },
-      hidden: ({ parent }) => parent?.oneDayEvent === true,
-      validation: (Rule) => Rule.custom((endDate, context) => {
-        const { oneDayEvent, startDate } = context.parent;
-        if (!oneDayEvent) {
-          if (!endDate) {
-            return 'End Date is required if it is not one day event'
-          } else if (endDate <= startDate) {
-            return 'End date must be later than the start date';
-          }
-        }
-        return true;
-      })
+    }),
+    defineField({
+      title: 'To Date',
+      name: 'toDate',
+      type: 'date',
+      fieldset: "dates",
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        calendarTodayLabel: 'Today'
+      },
     }),
 
     defineField({
