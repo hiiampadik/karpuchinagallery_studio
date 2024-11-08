@@ -60,8 +60,6 @@ export default defineType({
       }
     }),
 
-    // todo year
-
     defineField({
       title: "Cover",
       name: "cover",
@@ -71,19 +69,18 @@ export default defineType({
 
 
     defineField({
-      name: 'exhibitions',
-      title: 'Exhibitions',
-      type: "array",
-      of: [
-        defineArrayMember({
-          title: "Exhibition",
-          type: 'reference',
-          to: [{type: 'exhibitions' }]
-        }),
-      ],
-      validation: Rule => Rule.unique(),
+      name: 'info',
+      title: 'Info',
+      type: 'localizedText',
     }),
 
+
+    defineField({
+      name: 'gallery',
+      title: "Image Gallery",
+      type: 'galleryArray',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 
   preview: {

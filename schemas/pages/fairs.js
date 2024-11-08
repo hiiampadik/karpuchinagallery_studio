@@ -13,22 +13,23 @@ export default defineType({
       },
     },
     {
-      name: "texts",
-      title: "Texts",
-      options: {
-        collapsible: true,
-        columns: 1,
-      },
-    },
-    {
       name: "details",
       title: "Details",
       options: {
         collapsible: true,
+        collapsed: true,
         columns: 1,
       },
     },
-
+    {
+      name: "texts",
+      title: "Texts",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
+      },
+    },
   ],
 
 
@@ -59,6 +60,20 @@ export default defineType({
     }),
 
     defineField({
+      name: 'artists',
+      title: 'Artists',
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Artist",
+          type: 'string',
+          validation: Rule => Rule.required().min(1)
+        }),
+      ],
+      validation: Rule => Rule.unique(),
+    }),
+
+    defineField({
       title: "Cover",
       name: "cover",
       type: "image",
@@ -73,12 +88,6 @@ export default defineType({
       options: {
         disableAlpha: true
       }
-    }),
-    defineField({
-      name: "documents",
-      title: "Documents",
-      type: "documentsArray",
-      fieldset: 'details',
     }),
 
     defineField({
@@ -127,17 +136,17 @@ export default defineType({
     }),
 
     defineField({
-      name: 'artists',
-      title: 'Artists',
-      type: "array",
-      of: [
-        defineArrayMember({
-          title: "Artist",
-          type: 'reference',
-          to: [{type: 'artists' }]
-        }),
-      ],
-      validation: Rule => Rule.unique(),
+      name: 'curatorsText',
+      title: `Curator's Text`,
+      type: 'localizedRichParagraph',
+      fieldset: "texts",
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: "documents",
+      title: "Documents",
+      type: "documentsArray",
     }),
 
     defineField({
@@ -152,14 +161,6 @@ export default defineType({
         }),
       ],
       validation: Rule => Rule.unique(),
-    }),
-
-    defineField({
-      name: 'curatorsText',
-      title: `Curator's Text`,
-      type: 'localizedRichParagraph',
-      fieldset: "texts",
-      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
