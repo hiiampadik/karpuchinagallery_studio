@@ -123,6 +123,12 @@ export default defineType({
     }),
 
     defineField({
+      name: 'curatorName',
+      title: 'Curator Name',
+      type: 'string',
+      fieldset: "texts",
+    }),
+    defineField({
       name: 'curatorsText',
       title: `Curator's Text`,
       type: 'localizedRichParagraph',
@@ -160,13 +166,12 @@ export default defineType({
   preview: {
     select: {
       title: "title.cs",
-      startDate: "startDate",
-      endDate: "endDate",
-      oneDayEvent: "oneDayEvent",
+      openingDate: "openingDate",
+      toDate: "toDate",
       media: "cover",
     },
     prepare(selection) {
-      const { title, startDate, endDate, oneDayEvent, media } = selection;
+      const { title, openingDate, toDate, media } = selection;
 
       // Function to format dates as DD/MM/YYYY
       const formatDate = (dateString) => {
@@ -175,12 +180,11 @@ export default defineType({
         return date.toLocaleDateString('en-GB'); // en-GB locale formats as DD/MM/YYYY
       };
 
-      const formattedStartDate = formatDate(startDate);
-      const formattedEndDate = formatDate(endDate);
+      const formattedStartDate = formatDate(openingDate);
 
-      const dateSubtitle = oneDayEvent
-        ? formattedStartDate
-        : `${formattedStartDate} - ${formattedEndDate}`;
+      const dateSubtitle = toDate
+        ? `${formattedStartDate} - ${formatDate(toDate)}`
+        : formattedStartDate;
 
       return {
         title: title ?? 'Draft',
