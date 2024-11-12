@@ -14,6 +14,9 @@ export default defineType({
           type: 'image',
           title: 'File',
           validation: (Rule) => Rule.required(),
+          options: {
+            metadata: ['originalFilename'] // Request original filename metadata
+          }
         },
         {
           name: 'alt',
@@ -24,12 +27,13 @@ export default defineType({
       preview: {
         select: {
           title: "alt",
-          media: "image"
+          media: "image",
+          filename: "image.asset.originalFilename"
         },
         prepare(selection) {
-          const {title, media} = selection;
+          const {media, filename} = selection;
           return {
-            title: title ?? 'Draft',
+            title: filename,
             media: media
           };
         }

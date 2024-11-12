@@ -67,7 +67,6 @@ export const eventFields = [
     title: "Space / Place",
     name: "gallerySpace",
     type: "string",
-    validation: (Rule) => Rule.required(),
   }),
 
   defineField({

@@ -29,6 +29,8 @@ import localizedRichText from './schemas/objects/localizedRichText'
 import documentsArray from './schemas/components/documentsArray'
 import fairs from './schemas/pages/fairs'
 
+import {media, mediaAssetSource} from 'sanity-plugin-media'
+
 const sanityConfig = defineConfig({
   name: 'default',
   title: 'Karpuchina Gallery',
@@ -131,12 +133,31 @@ const sanityConfig = defineConfig({
           ]),
     }),
     colorInput(),
+    media(),
     internationalizedArray({
       languages: i18n.languages,
       defaultLanguages: [i18n.base],
       fieldTypes: ['string', 'text'],
     }),
   ],
+
+  form: {
+    // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
+    file: {
+      assetSources: previousAssetSources => {
+        return previousAssetSources.filter(assetSource => {
+          return assetSource !== mediaAssetSource
+        })
+      },
+    },
+    image: {
+      assetSources: previousAssetSources => {
+        return previousAssetSources.filter(assetSource => {
+          return assetSource === mediaAssetSource
+        })
+      },
+    },
+  },
 
   schema: {
     types: (prevTypes: any) => {
