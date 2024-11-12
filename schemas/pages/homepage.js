@@ -9,6 +9,9 @@ export default defineType({
       name: 'onDisplay',
       title: 'On Display',
       type: "reference",
+      options: {
+        sort: [{ field: 'openingDate', direction: 'desc' }] // SORTING REFERENCE FIELDS SEARCH
+      },
       to: [{type: 'exhibitions' }],
       validation: (Rule) => Rule.required(),
     }),
@@ -16,6 +19,9 @@ export default defineType({
       name: 'upcoming',
       title: 'Upcoming',
       type: "reference",
+      options: {
+        sort: [{ field: 'openingDate', direction: 'desc' }] // SORTING REFERENCE FIELDS SEARCH
+      },
       to: [{type: 'exhibitions' }],
     }),
   ],

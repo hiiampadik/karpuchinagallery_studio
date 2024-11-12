@@ -37,6 +37,9 @@ export default defineType({
           title: 'Exhibitions',
           type: "reference",
           to: [{type: 'exhibitions' }],
+          options: {
+            sort: [{ field: 'openingDate', direction: 'desc' }] // SORTING REFERENCE FIELDS SEARCH
+          },
           validation: (Rule) => Rule.required(),
         }),
 

@@ -63,27 +63,8 @@ const sanityConfig = defineConfig({
 
             S.divider(),
 
-            S.listItem()
-              .title('Exhibitions')
-              .icon(PresentationIcon)
-              .child(
-                S.documentList()
-                  .title('Exhibitions')
-                  .filter('_type == "exhibitions"')
-                  .params({ order: 'startDate' })
-                  .defaultOrdering([{ field: 'startDate', direction: 'asc' }])
-              ),
-
-            S.listItem()
-              .title('Fairs')
-              .icon(PresentationIcon)
-              .child(
-                S.documentList()
-                  .title('Fairs')
-                  .filter('_type == "fairs"')
-                  .params({ order: 'startDate' })
-                  .defaultOrdering([{ field: 'startDate', direction: 'asc' }])
-              ),
+            ...S.documentTypeListItems().filter(item => item.getId() === 'exhibitions'),
+            ...S.documentTypeListItems().filter(item => item.getId() === 'fairs'),
 
             S.listItem()
               .title('Artists')
@@ -92,6 +73,8 @@ const sanityConfig = defineConfig({
                 S.documentList()
                   .title('Artists')
                   .filter('_type == "artists"')
+                  .defaultOrdering([{ field: 'name', direction: 'asc' }])
+                  .apiVersion('v2023-08-01')
               ),
 
             orderableDocumentListDeskItem({
@@ -110,6 +93,7 @@ const sanityConfig = defineConfig({
                   .title('All Artworks')
                   .filter('_type == "artworks"')
                   .defaultOrdering([{ field: 'artist', direction: 'asc' }])
+                  .apiVersion('v2023-08-01')
               ),
 
 
@@ -123,13 +107,10 @@ const sanityConfig = defineConfig({
                     S.documentList()
                       .title('Artworks')
                       .filter('_type == "artworks" && artist._ref == $artistId')
-                      .params({ artistId }),
+                      .params({ artistId })
+                      .apiVersion('v2023-08-01')
                   )
               ),
-
-
-
-
           ]),
     }),
     colorInput(),
