@@ -17,7 +17,6 @@ export default defineType({
       title: 'Upcoming',
       type: "reference",
       to: [{type: 'exhibitions' }],
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
