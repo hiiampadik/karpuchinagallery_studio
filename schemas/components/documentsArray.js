@@ -13,7 +13,14 @@ export default defineType({
           name: 'file',
           type: "file",
           title: 'File',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule) => Rule.required().custom((file) => {
+            if (file && file.asset && file.asset._ref) {
+              const fileSizeInBytes = parseInt(file.asset._ref.split('-')[1], 10); // Extract size from _ref
+              const maxFileSizeInBytes = 10 * 1024 * 1024; // 10 MB
+              return fileSizeInBytes <= maxFileSizeInBytes || 'File must be smaller than 10 MB';
+            }
+            return true;
+          }),
         },
         {
           name: 'alt',
