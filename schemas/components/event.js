@@ -136,6 +136,7 @@ export const eventFields = [
       dateFormat: 'YYYY-MM-DD',
       calendarTodayLabel: 'Today'
     },
+    validation: (Rule) => Rule.required(),
   }),
   defineField({
     title: 'To Date',
@@ -146,6 +147,7 @@ export const eventFields = [
       dateFormat: 'YYYY-MM-DD',
       calendarTodayLabel: 'Today'
     },
+    validation: (Rule) => Rule.required(),
   }),
 
   defineField({
@@ -193,11 +195,12 @@ export const eventPreview = {
   select: {
     title: "title.cs",
     openingDate: "openingDate",
+    fromDate: "fromDate",
     toDate: "toDate",
     media: "cover",
   },
   prepare(selection) {
-    const { title, openingDate, toDate, media } = selection;
+    const { title, fromDate, toDate, media } = selection;
 
     // Function to format dates as DD/MM/YYYY
     const formatDate = (dateString) => {
@@ -206,7 +209,7 @@ export const eventPreview = {
       return date.toLocaleDateString('en-GB'); // en-GB locale formats as DD/MM/YYYY
     };
 
-    const formattedStartDate = formatDate(openingDate);
+    const formattedStartDate = formatDate(fromDate);
 
     const dateSubtitle = toDate
       ? `${formattedStartDate} - ${formatDate(toDate)}`

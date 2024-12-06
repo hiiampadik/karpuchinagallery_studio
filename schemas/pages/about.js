@@ -38,29 +38,22 @@ export default defineType({
 
   fields: [
     defineField({
-      name: 'contact',
-      type: 'localizedRichParagraph',
+      name: 'leftColumn',
+      type: 'localizedRichText',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
-      name: 'address',
-      type: 'localizedRichParagraph',
+      name: 'rightColumn',
+      type: 'localizedRichText',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'open',
-      type: 'localizedRichParagraph',
-      fieldset: "info",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'connect',
-      type: 'localizedRichParagraph',
-      fieldset: "info",
-      validation: (Rule) => Rule.required(),
-    }),
+
+
+
+
     defineField({
       name: 'bio',
       type: 'localizedRichText',

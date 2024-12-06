@@ -71,7 +71,7 @@ export default defineType({
     defineField({
       name: 'info',
       title: 'Info',
-      type: 'localizedText',
+      type: 'localizedRichParagraph',
     }),
 
 
