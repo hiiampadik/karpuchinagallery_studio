@@ -4,12 +4,13 @@ import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 import {colorInput} from '@sanity/color-input'
 import {i18n} from './languages'
-import {HomeIcon, InfoOutlineIcon, UsersIcon, ImagesIcon, PresentationIcon} from '@sanity/icons'
+import {HomeIcon, InfoOutlineIcon, UsersIcon, ImagesIcon} from '@sanity/icons'
 
 import homepage from './schemas/pages/homepage'
 import about from './schemas/pages/about'
 import artists from './schemas/pages/artists'
 import exhibitions from './schemas/pages/exhibitions'
+import artistsEvents from './schemas/pages/artistsEvents'
 import artworks from './schemas/pages/artworks'
 
 import figure from './schemas/components/figure'
@@ -65,6 +66,7 @@ const sanityConfig = defineConfig({
 
             ...S.documentTypeListItems().filter(item => item.getId() === 'exhibitions'),
             ...S.documentTypeListItems().filter(item => item.getId() === 'fairs'),
+            ...S.documentTypeListItems().filter(item => item.getId() === 'artistsEvents'),
 
             S.listItem()
               .title('Artists')
@@ -150,6 +152,7 @@ const sanityConfig = defineConfig({
         artworks,
         fairs,
         exhibitions,
+        artistsEvents,
 
         figure,
         blockRichText,

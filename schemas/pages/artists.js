@@ -96,7 +96,7 @@ export default defineType({
         defineArrayMember({
           title: "Event",
           type: 'reference',
-          to: [{type: 'exhibitions' }, {type: 'fairs' }]
+          to: [{type: 'artistsEvents' }]
         }),
       ],
       validation: Rule => Rule.unique(),
