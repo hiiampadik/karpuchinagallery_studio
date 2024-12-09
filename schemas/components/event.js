@@ -156,6 +156,15 @@ export const eventFields = [
     type: 'string',
     fieldset: "texts",
   }),
+
+  defineField({
+    name: 'alternativeTextTitle',
+    title: 'Alternative Text Title',
+    description: `Curator's text etc.`,
+    type: 'localizedString',
+    fieldset: "texts",
+  }),
+
   defineField({
     name: 'text',
     title: `Text`,
