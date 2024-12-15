@@ -64,13 +64,6 @@ export default defineType({
       type: 'galleryArray',
     }),
 
-    defineField({
-      name: 'footer',
-      type: 'localizedRichText',
-      fieldset: "footer",
-      validation: (Rule) => Rule.required(),
-    }),
-
   ],
   preview: {
     prepare() {
