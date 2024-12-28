@@ -14,9 +14,6 @@ export default defineType({
           type: 'image',
           title: 'File',
           validation: (Rule) => Rule.required(),
-          options: {
-            metadata: ['originalFilename'] // Request original filename metadata
-          }
         },
         {
           name: 'alt',
