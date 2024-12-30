@@ -25,6 +25,13 @@ export default defineType({
 
   fields: [
     defineField({
+      name: "orderRank",
+      title: "Order",
+      type: "string",
+      hidden: true,
+    }),
+
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',

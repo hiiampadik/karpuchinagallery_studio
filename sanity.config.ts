@@ -98,7 +98,6 @@ const sanityConfig = defineConfig({
                   .apiVersion('v2023-08-01')
               ),
 
-
             S.listItem()
               .title('Artworks by Artist')
               .icon(ImagesIcon)
@@ -113,6 +112,11 @@ const sanityConfig = defineConfig({
                       .apiVersion('v2023-08-01')
                   )
               ),
+
+            orderableDocumentListDeskItem({
+              type: 'artworks',
+              title: 'Order of Artworks',
+              S, context}),
           ]),
     }),
     colorInput(),
