@@ -1,18 +1,18 @@
 import {defineType} from 'sanity'
 
 export default defineType({
-  name: 'education',
+  name: 'artistFairs',
   type: 'array',
-  title: 'Education',
+  title: 'Selection of Art Fairs',
   fieldset: 'additionalInfo',
   of: [
     {
       type: 'object',
-      title: 'Education',
+      title: 'Fair',
       fields: [
         {
           name: 'year',
-          type: 'string',
+          type: 'number',
           title: 'Year',
         },
         {

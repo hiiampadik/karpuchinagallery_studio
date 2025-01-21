@@ -12,6 +12,7 @@ export default defineType({
       options: {
         sort: [{ field: 'openingDate', direction: 'desc' }] // SORTING REFERENCE FIELDS SEARCH
       },
+      description: "ALERT! If the event name, cover image or date is changed, the homepage needs to be republished to show changes.",
       to: [{type: 'exhibitions' }],
       validation: (Rule) => Rule.required(),
     }),
@@ -22,6 +23,7 @@ export default defineType({
       options: {
         sort: [{ field: 'openingDate', direction: 'desc' }] // SORTING REFERENCE FIELDS SEARCH
       },
+      description: "ALERT! If the event name, cover image or date is changed, the homepage needs to be republished to show changes.",
       to: [{type: 'exhibitions' }],
     }),
   ],

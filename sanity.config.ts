@@ -31,6 +31,7 @@ import documentsArray from './schemas/components/documentsArray'
 import fairs from './schemas/pages/fairs'
 
 import {media, mediaAssetSource} from 'sanity-plugin-media'
+import artistFairs from './schemas/components/artistFairs'
 
 const sanityConfig = defineConfig({
   name: 'default',
@@ -168,6 +169,7 @@ const sanityConfig = defineConfig({
         artistEducation,
         artistGroupExhibition,
         artistSoloExhibition,
+        artistFairs,
 
         localizedRichText,
         localizedRichParagraph,

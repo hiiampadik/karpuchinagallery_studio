@@ -89,8 +89,15 @@ export default defineType({
     }),
 
     defineField({
+      type: 'artistFairs',
+      name: 'artFairs',
+      fieldset: 'additionalInfo'
+    }),
+
+    defineField({
       name: 'events',
       title: 'Exhibitions / Fairs',
+      description: "ALERT! If the event name, cover image or date is changed, the artist needs to be republished to show changes.",
       type: "array",
       of: [
         defineArrayMember({
