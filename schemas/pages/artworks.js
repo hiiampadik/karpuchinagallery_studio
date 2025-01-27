@@ -33,7 +33,15 @@ export default defineType({
 
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title Cs',
+      type: 'string',
+      fieldset: "info",
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'titleEn',
+      title: 'Title En',
       type: 'string',
       fieldset: "info",
       validation: (Rule) => Rule.required(),
@@ -43,7 +51,6 @@ export default defineType({
       title: 'Year',
       name: 'year',
       type: 'string',
-      fieldset: "info",
     }),
 
 
