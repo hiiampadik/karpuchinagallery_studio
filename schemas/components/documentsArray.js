@@ -13,14 +13,24 @@ export default defineType({
           name: 'file',
           type: "file",
           title: 'File',
-          validation: (Rule) => Rule.required().custom((file) => {
-            if (file && file.asset && file.asset._ref) {
-              const fileSizeInBytes = parseInt(file.asset._ref.split('-')[1], 10); // Extract size from _ref
-              const maxFileSizeInBytes = 10 * 1024 * 1024; // 10 MB
-              return fileSizeInBytes <= maxFileSizeInBytes || 'File must be smaller than 10 MB';
-            }
-            return true;
-          }),
+          validation: (rule) =>
+            rule.custom(async (value, { getClient }) => {
+              if (!value) {
+                return "File is required";
+              }
+
+              if (value?.asset?._ref) {
+                const client = getClient({ apiVersion: `2025-01-01` });
+                const size = await client.fetch(`*[_id == $id][0].size`, {
+                  id: value.asset._ref,
+                });
+                if (size > 10000000) {
+                  return "File size must be less than 10MB";
+                }
+              }
+
+              return true;
+            }),
         },
         {
           name: 'alt',
