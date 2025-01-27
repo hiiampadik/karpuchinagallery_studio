@@ -24,8 +24,8 @@ export default defineType({
                 const size = await client.fetch(`*[_id == $id][0].size`, {
                   id: value.asset._ref,
                 });
-                if (size > 10000000) {
-                  return "File size must be less than 10MB";
+                if (size > 5000000) {
+                  return "File size must be less than 5MB";
                 }
               }
 
